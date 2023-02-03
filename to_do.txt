@@ -66,5 +66,3 @@ On_press of "=" pad:
         move result from LCD2 to LCD1
         assign self.inputs variable to another variable
         clear self.inputs variable
-
-
