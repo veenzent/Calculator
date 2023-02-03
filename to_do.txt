@@ -17,10 +17,9 @@ work on 'x^2' and '%' functionality
 Use regular expression pattern matching to accept only numbers, decimals and math opeartors in textinput field
 Use kivymd buttons in place of kivy buttons for better ux
 
-#################### ACCOMPLISHED ####################
-Align text in LCD1 and LCD2 to the left
-Take inputs from numpad
 
+
+######################################################
 On_press of "C" pad:
     clear screens
     set LCD1 hint_text to "0"
@@ -67,5 +66,3 @@ On_press of "=" pad:
         move result from LCD2 to LCD1
         assign self.inputs variable to another variable
         clear self.inputs variable
-
-
