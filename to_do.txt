@@ -1,0 +1,71 @@
+Install kivy from kivy server if you encounter problems installing kivy.
+link >> https://stackoverflow.com/questions/74342446/error-no-matching-distribution-found-for-kivy-deps-sdl2-dev-0-4-5
+
+OR
+
+simply copy and past in terminal:
+pip install kivy[base] kivy_examples --pre --extra-index-url https://kivy.org/downloads/simple/
+
+
+
+######################## TODO ########################
+Disable paste in TextInput
+Make rowspan of '=' pad == 2
+work on accepting some operators(-) before numbers
+accept inputs both from keyboard and numpads
+work on 'x^2' and '%' functionality
+Use regular expression pattern matching to accept only numbers, decimals and math opeartors in textinput field
+Use kivymd buttons in place of kivy buttons for better ux
+
+#################### ACCOMPLISHED ####################
+Align text in LCD1 and LCD2 to the left
+Take inputs from numpad
+
+On_press of "C" pad:
+    clear screens
+    set LCD1 hint_text to "0"
+
+On_press of "<<" pad:
+    if expression list is not empty:
+        swap expression list for inpus list. a,b = b,a
+        display previous calculation on LCD1
+        and its result on LCD2.
+    else:
+        if not self.inputs:
+            pass
+        else:
+            remove last input entered
+            update LCD1 display
+            if not self.inputs:
+                pass
+            if last input is an operator: ==> (a + b - c +)
+                evaluate inputs without that operator so eval func doesn't throw an error.
+                display result on LCD2
+            else if no operator in input:
+                set LCD2 text to ""
+
+On_press of numpad:
+    append pressed num to inputs
+    display num on LCD1
+    if length of inputs > 1
+        evaluate expression using BODMAS principle
+        display result in LCD2
+    if no operator in input:
+        set LCD2 text to ""
+
+On_press of any math operator pad:
+    if inputs ends with an operator:
+        replace that operator with currently pressed
+    else:
+        append operator to number on LCD1
+    display expression on LCD1
+
+On_press of "=" pad:
+    if there is no math operator in inputs or no inputs at all
+        Ignore press:
+    else:
+        move result from LCD2 to LCD1
+        assign self.inputs variable to another variable
+        clear self.inputs variable
+
+

@@ -1,0 +1,290 @@
+Calc:
+    orientation: 'vertical'
+    padding: "10dp"
+    canvas:
+        Color:
+            rgba: root.canvas_color
+        Rectangle:
+            size: self.width, self.height
+
+    # MDTopAppBar:
+    #     title: "Basic Calculator"
+    #     size_hint: 1, .05
+
+    MDSwitch:
+        id: switch
+        widget_style: "ios"
+        track_color_active: "black"
+        track_color_inactive: "white"
+        thumb_color_active: "white"
+        thumb_color_inactive: "black"
+        on_active: root.colorSwitch(self)
+        size: (dp(43), dp(20))
+
+    Label:
+        size_hint: 1, .02
+
+    MDTextField:
+        id: lcd1
+        input_filter: "float"
+        multiline: False
+        font_size: 35
+        size_hint: 1, .2
+        base_direction: "rtl"
+        # on_text_validate: root.equal_to()
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: root.button_color
+            # Line:
+            #     rounded_rectangle:(self.pos[0], self.pos[1], self.size[0], self.size[1], 13)
+            #     width: 1
+
+    Label:
+        id: lcd2
+        text: ""
+        color: 1, 1, 1, .5
+        text_size: self.width - 40, self.height
+        halign: "right"
+        size_hint: 1, .12
+    Label:
+        size_hint: 1, .02
+
+    StackLayout:
+        orientation: "lr-tb"
+        padding: "10dp"
+        spacing: "20dp"
+        Button:
+            id: c_btn
+            text: "C"
+            size_hint: .25, .15
+            on_press: root.clear_screen()
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: bck_btn
+            text: "<<"
+            size_hint: .25, .15
+            on_press: root.backspace()
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "/"
+            size_hint: .25, .15
+            on_press: root.add_operator(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: 0, 0, .8, .5
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "*"
+            size_hint: .25, .15
+            on_press: root.add_operator(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: 0, 0, .8, .5
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num7
+            text: "7"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num8
+            text: "8"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num9
+            text: "9"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "-"
+            size_hint: .25, .15
+            on_press: root.add_operator(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: 0, 0, .8, .5
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num4
+            text: "4"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num5
+            text: "5"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num6
+            text: "6"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "+"
+            size_hint: .25, .15
+            on_press: root.add_operator(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: 0, 0, .8, .5
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num1
+            text: "1"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num2
+            text: "2"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num3
+            text: "3"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "x^2"
+            size_hint: .25, .15
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: 0, 0, .8, .5
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: percent_btn
+            text: "%"
+            size_hint: .25, .15
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba:root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: num0
+            text: "0"
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            id: dec_btn
+            text: "."
+            size_hint: .25, .15
+            on_press: root.pressed_number(self)
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "="
+            size_hint: .25, .15
+            on_press: root.equal_to()
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: 0, 0, .8, .5
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+    # Label:
+    #     size: 1, .1
