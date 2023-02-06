@@ -43,6 +43,7 @@ Calc:
     Label:
         id: lcd2
         text: ""
+        font_size: dp(20)
         color: 1, 1, 1, .5
         text_size: self.width - 40, self.height
         halign: "right"
@@ -62,7 +63,7 @@ Calc:
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
-                    rgba: root.button_color
+                    rgba: 0, 0, .8, .5
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -74,7 +75,18 @@ Calc:
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
-                    rgba: root.button_color
+                    rgba: 0, 0, .8, .5
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "CE"
+            size_hint: .25, .15
+            on_press: root.clear_screen()
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: 0, 0, .8, .5
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -89,16 +101,6 @@ Calc:
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-        Button:
-            text: "*"
-            size_hint: .25, .15
-            on_press: root.add_operator(self)
-            background_color: 0, 0, 0, 0
-            canvas.before:
-                Color:
-                    rgba: 0, 0, .8, .5
-                RoundedRectangle:
-                    size: self.size
                     pos: self.pos
         Button:
             id: num7
@@ -137,7 +139,7 @@ Calc:
                     size: self.size
                     pos: self.pos
         Button:
-            text: "-"
+            text: "*"
             size_hint: .25, .15
             on_press: root.add_operator(self)
             background_color: 0, 0, 0, 0
@@ -184,7 +186,7 @@ Calc:
                     size: self.size
                     pos: self.pos
         Button:
-            text: "+"
+            text: "-"
             size_hint: .25, .15
             on_press: root.add_operator(self)
             background_color: 0, 0, 0, 0
@@ -231,8 +233,9 @@ Calc:
                     size: self.size
                     pos: self.pos
         Button:
-            text: "x^2"
+            text: "+"
             size_hint: .25, .15
+            on_press: root.add_operator(self)
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
@@ -244,6 +247,7 @@ Calc:
             id: percent_btn
             text: "%"
             size_hint: .25, .15
+            on_press: root.pressed_number(self)
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:

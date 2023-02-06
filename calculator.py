@@ -23,6 +23,7 @@ class Calc(BoxLayout):
         self.operators = ['/', '*', '-', '+']
         self.inputs = []
         self.expression = []
+        self.brackets = 0
 
     def colorSwitch(self, switch):
         if switch.active:
@@ -72,7 +73,7 @@ class Calc(BoxLayout):
                         self.ids.lcd2.text = str(eval(''.join(self.inputs)))
                     else:
                         self.ids.lcd2.text = ''
-
+    
     def pressed_number(self, number):
         self.inputs.append(number.text)
         self.ids.lcd1.text = ''.join(self.inputs)
@@ -80,20 +81,39 @@ class Calc(BoxLayout):
             if i in self.inputs:
                 self.ids.lcd2.text = str(eval(''.join(self.inputs)))
                 break
-            else:
-                self.ids.lcd2.text = ""
+            self.ids.lcd2.text = ""
+        if number.text == "%":
+            try:
+                self.inputs.pop()
+                self.inputs.append(('*0.01'))
+                self.ids.lcd2.text = str(eval(''.join(self.inputs)))
+            except Exception as e:
+                print(e)
+                self.ids.lcd2.text = "Error"
 
     def add_operator(self, operator):
-        if self.inputs[-1] in self.operators:
-            self.inputs.pop()
+        if self.expression:
+            self.inputs.append(str(eval(''.join(self.expression))))
+            self.expression.clear()
             self.inputs.append(operator.text)
         else:
-            self.inputs.append(operator.text)
+            try:
+                if self.inputs[-1] in self.operators:
+                    self.inputs.pop()
+                    self.inputs.append(operator.text)
+                else:
+                    self.inputs.append(operator.text)
+            except Exception as e:
+                print(e)
+                self.ids.lcd1.text = operator.text
+                self.ids.lcd2.text = "Error"
+            # else:
+            #     self.inputs.append(operator.text)
         self.ids.lcd1.text = ''.join(self.inputs)
 
     def equal_to(self):
-        if not self.ids.lcd2.text:
-            pass
+        if not self.ids.lcd2.text or self.ids.lcd2.text == "Error":
+            self.ids.lcd2.text = ""
         else:
             self.expression, self.inputs = self.inputs, self.expression
             self.ids.lcd1.text = str(eval(''.join(self.expression)))

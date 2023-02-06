@@ -1,5 +1,7 @@
+######################## Kivy Installation ########################
 Install kivy from kivy server if you encounter problems installing kivy.
 link >> https://stackoverflow.com/questions/74342446/error-no-matching-distribution-found-for-kivy-deps-sdl2-dev-0-4-5
+
 
 OR
 
@@ -8,18 +10,15 @@ pip install kivy[base] kivy_examples --pre --extra-index-url https://kivy.org/do
 
 
 
-######################## TODO ########################
-Disable paste in TextInput
-Make rowspan of '=' pad == 2
-work on accepting some operators(-) before numbers
+############################### TODO ###############################
 accept inputs both from keyboard and numpads
-work on 'x^2' and '%' functionality
-Use regular expression pattern matching to accept only numbers, decimals and math opeartors in textinput field
+work on '%' functionality
+Use regular expression pattern matching to accept only numbers, decimals and math operators in textinput field
 Use kivymd buttons in place of kivy buttons for better ux
 
 
 
-######################################################
+####################################################################
 On_press of "C" pad:
     clear screens
     set LCD1 hint_text to "0"
